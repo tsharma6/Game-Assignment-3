@@ -30,7 +30,7 @@ class GameScene: SKScene {
         border.restitution = 1
         self.physicsBody = border
         
-        
+//        sdadgasdkaj
         
     }
     
