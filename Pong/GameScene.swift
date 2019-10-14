@@ -13,6 +13,9 @@ class GameScene: SKScene {
     var ball = SKSpriteNode()
     var enemy = SKSpriteNode()
     var main = SKSpriteNode()
+    var topLbl = SKLabelNode()
+    var btmLbl = SKLabelNode()
+    
     
     var score = [Int]()
     
@@ -21,6 +24,11 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         startGame()
+        topLbl = self.childNode(withName: "topLabel") as!
+            SKLabelNode
+        btmLbl = self.childNode(withName: "btmLabel") as!
+            SKLabelNode
+        
         
         ball = self.childNode(withName: "ball") as! SKSpriteNode
         enemy = self.childNode(withName: "enemy") as! SKSpriteNode
@@ -36,6 +44,8 @@ class GameScene: SKScene {
     
     func startGame() {
         score = [0,0]
+        topLbl.text = "\(score[1])"
+        btmLbl.text = "\(score[0])"
     }
     
     func addScore(playerWhoWon : SKSpriteNode){
@@ -51,7 +61,8 @@ class GameScene: SKScene {
             score[1] += 1
             ball.physicsBody?.applyImpulse(CGVector(dx: -20, dy: -20))
         }
-        print(score)
+        topLbl.text = "\(score[1])"
+        btmLbl.text = "\(score[0])"
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
